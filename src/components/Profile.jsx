@@ -1,8 +1,7 @@
 import React from "react";
-import Alert from "./Aleart";
 
 export default function Profile(props) {
-  if (!props.data.response.email.email) return <Alert />;
+  console.log(props);
   return (
     <div className="relative flex flex-col w-full min-w-0 mb-6 break-words border border-dashed bg-clip-border rounded-2xl border-stone-200 bg-light/30 draggable">
       <div className="px-9 pt-9 flex-auto min-h-[70px] pb-0 bg-transparent">
@@ -11,7 +10,11 @@ export default function Profile(props) {
             <div className="relative inline-block shrink-0 rounded-2xl">
               <img
                 className="inline-block shrink-0 rounded-2xl w-[80px] h-[80px] lg:w-[160px] lg:h-[160px]"
-                src={props.data.response.company.logo}
+                src={
+                  props.data.response.picture
+                    ? props.data.response.picture
+                    : "avatar.jpg"
+                }
                 alt="image"
               />
               <div className="group/tooltip relative">
@@ -69,7 +72,9 @@ export default function Profile(props) {
                         <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
                       </svg>
                     </span>
-                    {props.data.response.email.email}
+                    {props.data.response.email.email
+                      ? props.data.response.email.email
+                      : "email not found !"}
                   </a>
                 </div>
               </div>
